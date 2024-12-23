@@ -37,8 +37,8 @@
 /* Combined Cookie Animation: Rotate + Bounce */
 .cookie {
     grid-row: 2;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background-image: url('resources/cookie.png'); /* Replace with your cookie image */
     background-size: cover;
