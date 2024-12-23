@@ -15,7 +15,7 @@
 
 /* Progress Bar Container */
 .progress-bar-container {
-    width: 40%;
+    width: 120px;
     height: 10px;
     background-color: #DDD;
     margin-top: 20px;
