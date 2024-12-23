@@ -16,7 +16,7 @@ window.onload = function() {
                 // Hide preloader and show content
                 document.getElementById('preloader').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
-            }, 600);
+            }, 600); // 600ms delay before content is shown
         }
-    }, 100);
+    }, 150); // Update progress every 150ms (this can be adjusted)
 };

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Cookies</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Preloader Section -->
+    <div id="preloader">
+        <div class="cookie"></div>
+        <div class="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <div id="content" style="display: none;">
+        <!-- Your website content goes here -->
+    <section class="magscroll">
+        <div class="container">
+            <section class="magscroll">
+                <h1 class="item">Smart Cookies</h1>
+            </section>
+            <section class="magscroll">
+                <h1 class="item">Background History</h1>
+            </section>
+            <section class="magscroll">
+                <h1 class="item">Vision</h1>
+            </section>
+            <section class="magscroll">
+                <h1 class="item">Our Location</h1>
+            </section>
+            <section class="magscroll"></section>
+                <h1 class="item">Resources</h1>
+            </section>
+            <section class="magscroll"></section>
+                <h1 class="item">Ref</h1>
+            </section>
+        </div>
+        <script>
+            const items = document.querySelectorAll('.item');
+            window.addEventListener('scroll',ShowItem);
+            ShowItem();
+            function ShowItem() {
+                const show = window.innerHeight*3/4;
+                items.forEach(item=>{
+                    const itemtop = item.getBoundingClientRect().top;
+                    if (itemtop < show){
+                        item.classList.add('active');
+                    }
+                    else {
+                        item.classList.remove('active');
+                    }
+                });
+            }  
+        </script>
+    </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
