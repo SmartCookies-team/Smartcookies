@@ -42,18 +42,18 @@
     border-radius: 50%;
     background-image: url('resources/cookie.png'); /* Replace with your cookie image */
     background-size: cover;
-    animation: rotateAndBounce 1.5s infinite linear;
+    animation: rotatecookie 1.5s infinite linear;
 }
 
-@keyframes rotateAndBounce {
+@keyframes rotatecookie {
     0% {
-        transform: rotate(0deg) scale(1) translateY(0);
+        transform: rotate(0deg);
     }
     50% {
-        transform: rotate(180deg) scale(1.1) translateY(-10px); /* Rotate and bounce up */
+        transform: rotate(180deg); 
     }
     100% {
-        transform: rotate(360deg) scale(1) translateY(0); /* Complete rotation and bounce back */
+        transform: rotate(360deg); 
     }
 }
 
