@@ -183,6 +183,7 @@ footer .icon.active {
   color: #f29e4c; /* Accent color for active icon */
   font-weight: bold;
   transform: scale(1.2); /* Slightly larger active icon */
+  pointer-events: none;
 }
   footer .icon:hover {
     background-color: rgba(255, 255, 255, 0.2); /* Hover highlight effect */
