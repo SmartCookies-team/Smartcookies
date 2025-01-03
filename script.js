@@ -37,22 +37,85 @@ closeModal.addEventListener('click', () => {
   authModal.style.display = 'none';
   document.body.style.filter = 'none';
 });
+// Select all sections and icons
+const main = document.querySelector('#main')
+const sections = document.querySelectorAll('.page');
+const icons = document.querySelectorAll('.icon');
 
-// Select all navigation icons (anchor links) in the footer
-const footerLinks = document.querySelectorAll('.bottom-nav .icon');
+function setActiveSection() {
+  
+  let currentSection = '';
 
-footerLinks.forEach((link) => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent default anchor behavior
-    const targetId = link.getAttribute('href'); // Get the target section ID
-    const targetSection = document.querySelector(targetId); // Select the target section
+  sections.forEach((section) => {
+    const sectionTop = section.getBoundingClientRect().top;
+    const sectionHeight = section.offsetHeight;
 
-    if (targetSection) {
-      // Smooth scroll to the target section
-      targetSection.scrollIntoView({
-        behavior: 'smooth', // Enable smooth scrolling
-        block: 'start', // Align the section to the top of the viewport
-      });
+    // Check if the section is within the viewport
+    if (sectionTop <= window.innerHeight / 2 && sectionTop + sectionHeight > window.innerHeight / 2) {
+      currentSection = section.id;
     }
   });
+
+  // Update the active class on icons
+  icons.forEach((icon) => {
+    if (icon.dataset.target === `#${currentSection}`) {
+      icon.classList.add('active');
+    } else {
+      icon.classList.remove('active');
+    }
+  });
+}
+
+// Add scroll event listener to update the active icon
+main.addEventListener('scroll', setActiveSection);
+
+// Add smooth scrolling for footer icons
+let isScrolling = false;
+
+icons.forEach((icon) => {
+  icon.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Mark as actively scrolling
+    isScrolling = true;
+
+    // Activate the clicked icon immediately
+    icons.forEach((ic) => ic.classList.remove('active'));
+    icon.classList.add('active');
+
+    // Smoothly scroll to the corresponding section
+    const target = document.querySelector(icon.dataset.target);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Allow scroll-based updates after smooth scrolling finishes
+    setTimeout(() => {
+      isScrolling = false;
+    }, 1000); // Adjust timeout based on the expected scroll duration
+  });
 });
+
+function setActiveSection() {
+  if (isScrolling) return; // Skip updates while actively scrolling
+
+  let currentSection = '';
+  sections.forEach((section) => {
+    const sectionTop = section.getBoundingClientRect().top;
+    const sectionHeight = section.offsetHeight;
+
+    if (sectionTop <= window.innerHeight / 2 && sectionTop + sectionHeight > window.innerHeight / 2) {
+      currentSection = section.id;
+    }
+  });
+
+  icons.forEach((icon) => {
+    if (icon.dataset.target === `#${currentSection}`) {
+      icon.classList.add('active');
+    } else {
+      icon.classList.remove('active');
+    }
+  });
+}
+
+main.addEventListener('scroll', setActiveSection);

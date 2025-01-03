@@ -82,7 +82,7 @@ body, html {
   display: none;
 }
   
-  header.navbar {
+header.navbar {
     height: 45px;
     position: fixed;
     top: 0;
@@ -95,20 +95,15 @@ body, html {
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
     backdrop-filter: blur(1px); /* Adds blur effect */
-  }
-  @media (max-width: 500px) {
-    header.navbar {
-      height: 35px;
-    }
-  }
+}
   
-  header .logo {
+header .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-  }
+} 
   
-  header .get-started {
+header .get-started {
     font-size: 0.9em;
     background-color: #f29e4c;
     border: none;
@@ -118,7 +113,7 @@ body, html {
     cursor: pointer;
     margin-right: 30px;
     white-space: nowrap;
-  }
+}
   
   .scroll-container {
     height: 100vh;
@@ -142,7 +137,7 @@ body, html {
   footer.bottom-nav {
     height: 25px;
     position: fixed;
-    bottom: 20px; /* Elevated slightly from the bottom */
+    bottom: 30px; /* Elevated slightly from the bottom */
     width: 50%; /* Smaller and centered */
     display: flex;
     justify-content: center;
