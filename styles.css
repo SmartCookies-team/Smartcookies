@@ -170,25 +170,26 @@ footer .icon {
   background: none;
   border: none;
   color: white;
-  font-size: 0.8rem;
-  padding: 8px 12px;
+  font-size: 1.3rem;
   border-radius: 15px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* Active icon styles */
+
 footer .icon.active {
   background-color: #f77e0641;
   color: #f29e4c; /* Accent color for active icon */
   font-weight: bold;
   transform: scale(1.2); /* Slightly larger active icon */
-  pointer-events: none;
 }
-  footer .icon:hover {
+@media (hover: hover) and (pointer: fine){
+footer .icon:hover {
     background-color: rgba(255, 255, 255, 0.2); /* Hover highlight effect */
     transform: scale(1.1); /* Slight scaling effect */
-  }
+}
+}
   
   .modal {
     display: none;
