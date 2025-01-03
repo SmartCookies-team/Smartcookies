@@ -118,4 +118,8 @@ function setActiveSection() {
   });
 }
 
-main.addEventListener('scroll', setActiveSection);
+document.addEventListener("touchstart", function() {
+  for (let el of document.querySelectorAll(":hover")) {
+      el.classList.remove("hover-effect");
+  }
+}, true);
