@@ -1,22 +1,26 @@
-window.onload = function() {
-    // Get the progress bar element
+window.onload = function () {
     const progressBar = document.getElementById('progress-bar');
-    
-    // Simulate page loading progress (adjust this logic to fit your needs)
+    const loadingMessage = document.getElementById('loading-message');
+  
     let progress = 0;
-
-    // Set interval to increase progress gradually (e.g., 10% every 100ms)
-    const interval = setInterval(function() {
-        progress += 10; // Increase progress by 10%
-        progressBar.style.width = progress + '%'; // Update the progress bar
-        
-        // Once progress reaches 100%, stop the interval
-        if (progress >= 100) {
-            clearInterval(interval);
-            // Hide the preloader and show the content
-            document.getElementById('preloader').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-        }
-    }, 100); // Update progress every 100ms (adjust speed as needed)
-};
-
+    const messages = [
+      "Mixing ingredients...",
+      "Shaping cookies...",
+      "Baking cookies...",
+      "Cooling down..."
+    ];
+  
+    const interval = setInterval(function () {
+      progress += 10;
+      progressBar.style.width = progress + '%';
+  
+      if (progress === 30) loadingMessage.textContent = messages[1];
+      if (progress === 60) loadingMessage.textContent = messages[2];
+      if (progress === 90) loadingMessage.textContent = messages[3];
+  
+      if (progress >= 100) {
+        clearInterval(interval);
+        document.getElementById('preloader').style.display = 'none';
+      }
+    }, 100);
+}

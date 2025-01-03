@@ -22,6 +22,18 @@ body, html {
   z-index: 9999;
 }
 
+#loading-message {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #D2691E; /* Chocolate brown color */
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  bottom: 15%; /* Position the message above the progress bar */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 /* Progress Bar Container */
 .progress-bar-container {
   width: 120px;
@@ -72,7 +84,7 @@ body, html {
 }
 
   /* Fixed Navbar at the top */
-  .navbar {
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -85,25 +97,25 @@ body, html {
     padding: 15px 20px;
     z-index: 1001; /* Ensure navbar is above content */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .navbar .logo {
+.navbar .logo {
     font-size: 1.3rem;
     font-weight: bold;
     color: #F5DEB3; /* Wheat color for a cookie-like text */
-  }
+}
 
-  .navbar .resources-btn {
-    background-color: #8B4513;
+.navbar .resources-btn {
     color: #FFF8DC;
+    text-decoration: none;
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-right: 30px;
-  }
+}
 
   .navbar .resources-btn:hover {
     background-color: #A0522D;
@@ -286,4 +298,51 @@ body, html {
     #section1 .title {
       font-size: 3rem;
     }
+  }
+
+  .search-bar {
+    color: #333;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin-right: 25px;
+  }
+  
+  .resources-container {
+    margin: 80px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #FFF8DC;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .resources-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .resources-list-item {
+    background-color: #FFE4B5;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .resources-list-item:hover {
+    background-color: #FFDAB9;
+  }
+  
+  .resources-list-item .content {
+    display: none;
+    padding-top: 10px;
+  }
+  
+  .resources-list-item .content.visible {
+    display: block;
   }
