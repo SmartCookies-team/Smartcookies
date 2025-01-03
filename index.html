@@ -4,69 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart Cookies</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <script src="script.js"></script>
     <!-- Preloader Section -->
     <div id="preloader">
-      <div class="cookie"></div>
-      <div class="progress-bar-container">
-          <div id="progress-bar"></div>
-      </div>
-      <div id="loading-message">Mixing ingredients...</div> 
-  </div>
-  <!-- Fixed Navbar -->
-  <div class="navbar">
-    <div class="logo">Smart Cookies</div>
-    <a href="" class="resources-btn">Resources</a>
-  </div>
-
-  <!-- Scrollable Content -->
-  <div class="scroll-container">
-    
-    <!-- Section 1: Smart Cookie -->
-    <div id="section1" class="scroll-item">
-      <img src="resources/cookie.png" alt="Smart Cookie" class="image">
-      <div class="text-content">
-        <div class="title">Smart Cookies</div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut hendrerit, neque et tincidunt feugiat, turpis tortor tempus ligula, et scelerisque eros tortor id purus. Proin ac gravida est. Nam eget auctor dui. Curabitur sollicitudin justo sit amet lorem congue, nec egestas sapien feugiat.
-        </p>
-      </div>
+        <div class="cookie"></div>
+        <div class="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+        <div id="loading-message">Mixing ingredients...</div> 
     </div>
-
-    <!-- Section 2: Our Vision -->
-    <div id="section2" class="scroll-item">
-      <div class="title">Our Vision</div>
-      <div class="text-content">
-        <p>
-          At Smart Cookies, we aim to create innovative, delicious, and healthy cookies that bring joy to people all over the world. Our vision is to craft cookies that are not only tasty but also contribute to a balanced lifestyle. With a blend of wholesome ingredients and a dash of creativity, we aspire to redefine the cookie experience.
-        </p>
-      </div>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="resources/cookie.png" width="10%" alt="Smart Cookies Logo">
+      <span>Smart Cookies</span>
     </div>
+    <button class="get-started" id="getStartedBtn">Get Started</button>
+  </header>
 
-    <!-- Section 3: Google Map of Universities -->
-    <div id="section3" class="scroll-item">
-      <div class="title">Medical Universities in Myanmar</div>
-      <div>
-        <!-- Replace with actual Google Map iframe link -->
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=University+of+Medicine+Yangon,Myanmar&zoom=12" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-        <p>Explore the locations of medical universities in Myanmar</p>
-      </div>
-    </div>
-
-    <!-- Section 4: Our Team -->
-    <div id="section4" class="scroll-item">
-      <div class="title">Our Team</div>
-      <div class="team-member">
-        <img src="https://via.placeholder.com/150?text=John+Doe" alt="Team Member">
-        <div class="name">John Doe</div>
-        <div class="bio">John is a passionate developer with a love for baking. He brings creativity to our team, ensuring our cookies are as innovative as our website!</div>
-      </div>
-      <!-- Footer Text in Section 4 -->
-      <p style="text-align:center; margin-top: 40px; font-size: 1rem;">&copy; 2024 Smart Cookies. All rights reserved.</p>
+  <!-- Modal (Sign In/Sign Up) -->
+  <div class="modal" id="authModal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Welcome to Smart Cookies</h2>
+      <button class="auth-btn">Sign In</button>
+      <button class="auth-btn">Sign Up</button>
     </div>
   </div>
+
+  <!-- Main Content -->
+  <main class="scroll-container">
+    <section class="page home" id="home">
+      <h1>Welcome to Smart Cookies!</h1>
+      <p>Discover a modern way to learn and grow.</p>
+    </section>
+    <section class="page goal" id="goal">
+      <h1>Our Goal</h1>
+      <p>Empowering education through innovation.</p>
+    </section>
+    <section class="page location" id="location">
+      <h1>Our Location</h1>
+      <p>Find us in your city or online.</p>
+    </section>
+    <section class="page team" id="team">
+      <h1>Our Team</h1>
+      <p>Meet the creative minds behind Smart Cookies.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bottom-nav">
+    <div class="nav-icons">
+      <a class="icon home-icon active" href="#home">🏠</a>
+      <a class="icon goal-icon" href="#goal">🎯</a>
+      <a class="icon location-icon" href="#location">📍</a>
+      <a class="icon team-icon" href="#team">👥</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
