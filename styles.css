@@ -140,7 +140,7 @@ header .get-started {
     bottom: 30px; /* Elevated slightly from the bottom */
     width: 50%; /* Smaller and centered */
     display: flex;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
     background-color: #b16a386f; /* Chocolate brown */
     padding: 10px 15px;
@@ -154,35 +154,14 @@ header .get-started {
   
   footer .nav-icons {
     display: flex;
-    justify-content: space-between;
-    gap: 40px; /* Default gap for medium and larger screens */
+    width: 100%; 
+    justify-content: space-around;/* Default gap for medium and larger screens */
   }
   
   /* Adjust gap for larger screens (e.g., desktops) */
   @media (min-width: 768px) {
     footer.bottom-nav {
       height: 30px;
-    }
-    footer .nav-icons {
-      gap: 60px; /* Increase gap on wider screens */
-    }
-  }
-  @media (min-width: 850px) {
-    footer .nav-icons {
-      gap: 80px; /* Increase gap on wider screens */
-    }
-  }
-  /* Adjust gap for smaller screens (e.g., mobile) */
-  @media (max-width: 700px) {
-    footer .nav-icons {
-      gap: 20px; /* Decrease gap on narrow screens */
-    }
-  }
-  
-  /* Adjust gap for smaller screens (e.g., mobile) */
-  @media (max-width: 500px) {
-    footer .nav-icons {
-      gap: 10px; /* Decrease gap on narrow screens */
     }
   }
   /* Default icon styles */
