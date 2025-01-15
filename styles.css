@@ -555,4 +555,12 @@ h1 {
     font-size: 2.5em;
 }
 
+#main .nav a {
+    margin-left: 20px;
+}
+
+#main .nav .button {
+    margin-right: 20px;
+}
+
 }
