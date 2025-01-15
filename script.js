@@ -1,119 +1,81 @@
-window.onload = function () {
-    const progressBar = document.getElementById('progress-bar');
-    const loadingMessage = document.getElementById('loading-message');
+document.addEventListener('DOMContentLoaded', () => {
+    const main = document.querySelector('#main');
   
-    let progress = 0;
-    const messages = [
-      "Mixing ingredients...",
-      "Shaping cookies...",
-      "Baking cookies...",
-      "Cooling down..."
-    ];
+    const parallaxDivs = document.querySelectorAll('.parallax');
   
-    const interval = setInterval(function () {
-      progress += 10;
-      progressBar.style.width = progress + '%';
+    // Object to track visibility of each div
+    const visibilityMap = new Map();
   
-      if (progress === 30) loadingMessage.textContent = messages[1];
-      if (progress === 60) loadingMessage.textContent = messages[2];
-      if (progress === 90) loadingMessage.textContent = messages[3];
+    // Intersection Observer to detect when divs enter the viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          visibilityMap.set(entry.target, entry.isIntersecting);
+        });
+      },
+      { root: main, threshold: 0.01 } // Adjust threshold as needed
+    );
   
-      if (progress >= 100) {
-        clearInterval(interval);
-        document.getElementById('preloader').style.display = 'none';
-      }
-    }, 100);
-}
-// Modal Functionality
-const getStartedBtn = document.getElementById('getStartedBtn');
-const authModal = document.getElementById('authModal');
-const closeModal = document.getElementById('closeModal');
-
-getStartedBtn.addEventListener('click', () => {
-  authModal.style.display = 'flex';
-});
-
-closeModal.addEventListener('click', () => {
-  authModal.style.display = 'none';
-  document.body.style.filter = 'none';
-});
-// Select all sections and icons
-const main = document.querySelector('#main')
-const sections = document.querySelectorAll('.page');
-const icons = document.querySelectorAll('.icon');
-
-function setActiveSection() {
+    // Observe all parallax divs
+    parallaxDivs.forEach((div) => observer.observe(div));
   
-  let currentSection = '';
-
-  sections.forEach((section) => {
-    const sectionTop = section.getBoundingClientRect().top;
-    const sectionHeight = section.offsetHeight;
-
-    // Check if the section is within the viewport
-    if (sectionTop <= window.innerHeight / 2 && sectionTop + sectionHeight > window.innerHeight / 2) {
-      currentSection = section.id;
-    }
+    // Scroll event listener for parallax effect
+    main.addEventListener('scroll', () => {
+      const scrollPosition = main.scrollTop;
+  
+      parallaxDivs.forEach((div) => {
+        if (visibilityMap.get(div)) {
+          const axis = div.getAttribute('data-axis') || 'x'; // Default to X-axis
+          const speed = parseFloat(div.getAttribute('data-speed')) || 0.15; // Default speed
+  
+          if (axis === 'x') {
+            div.style.transform = `translateX(${scrollPosition * speed}px)`;
+          } else if (axis === 'y') {
+            div.style.transform = `translateY(${scrollPosition * speed}px)`;
+          }
+        }
+      });
+    });
   });
 
-  // Update the active class on icons
-  icons.forEach((icon) => {
-    if (icon.dataset.target === `#${currentSection}`) {
-      icon.classList.add('active');
-    } else {
-      icon.classList.remove('active');
+
+  class MyAOS {
+    constructor(options = {}) {
+      this.settings = {
+        threshold: options.threshold || 0.1, // Percentage of visibility to trigger
+        rootMargin: options.rootMargin || "0px", // Offset around viewport
+        once: options.once || false, // Repeat animations if set to false
+      };
+  
+      this.elements = document.querySelectorAll("[data-my-aos]");
+      this.init();
     }
-  });
-}
-
-// Add scroll event listener to update the active icon
-main.addEventListener('scroll', setActiveSection);
-
-// Add smooth scrolling for footer icons
-let isScrolling = false;
-
-icons.forEach((icon) => {
-  icon.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    // Mark as actively scrolling
-    isScrolling = true;
-
-    // Activate the clicked icon immediately
-    icons.forEach((ic) => ic.classList.remove('active'));
-    icon.classList.add('active');
-
-    // Smoothly scroll to the corresponding section
-    const target = document.querySelector(icon.dataset.target);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+  
+    init() {
+      const observer = new IntersectionObserver(this.handleIntersect.bind(this), {
+        threshold: this.settings.threshold,
+        rootMargin: this.settings.rootMargin,
+      });
+  
+      this.elements.forEach((element) => observer.observe(element));
     }
-
-    // Allow scroll-based updates after smooth scrolling finishes
-    setTimeout(() => {
-      isScrolling = false;
-    }, 1000); // Adjust timeout based on the expected scroll duration
-  });
-});
-
-function setActiveSection() {
-  if (isScrolling) return; // Skip updates while actively scrolling
-
-  let currentSection = '';
-  sections.forEach((section) => {
-    const sectionTop = section.getBoundingClientRect().top;
-    const sectionHeight = section.offsetHeight;
-
-    if (sectionTop <= window.innerHeight / 2 && sectionTop + sectionHeight > window.innerHeight / 2) {
-      currentSection = section.id;
+  
+    handleIntersect(entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Add 'visible' class to trigger animation
+          entry.target.classList.add("visible");
+        } else if (!this.settings.once) {
+          // Remove 'visible' class to allow repeated animations
+          entry.target.classList.remove("visible");
+        }
+      });
     }
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    new MyAOS({
+      threshold: 0.2,
+      once: false, // Set to false for repeated animations
+    });
   });
-
-  icons.forEach((icon) => {
-    if (icon.dataset.target === `#${currentSection}`) {
-      icon.classList.add('active');
-    } else {
-      icon.classList.remove('active');
-    }
-  });
-}
