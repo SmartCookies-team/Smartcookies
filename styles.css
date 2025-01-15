@@ -245,6 +245,10 @@ h1 {
     border: 0.75px solid black;
 }
 
+.rumours h1 {
+    font-size: 3em;
+}
+
 .rumour_container {
     width: 60%;
     margin-left: 10%;
@@ -545,6 +549,10 @@ h1 {
     scale: 0.7;
     width: 200%;
     left: -250px;
+}
+
+.rumours h1 {
+    font-size: 2.5em;
 }
 
 }
